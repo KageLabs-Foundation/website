@@ -8,18 +8,18 @@ interface AboutProps {
 const values = [
   {
     number: "01",
-    title: "Innovation First",
-    description: "Pushing boundaries with cutting-edge AI research and breakthrough solutions that reshape industries."
+    title: "Built for Builders",
+    description: "We're creating tools that empower developers, students, and entrepreneurs to build faster and smarter with AI."
   },
   {
     number: "02",
-    title: "Human-Centric",
-    description: "Creating technology that bridges the gap between human creativity and machine intelligence."
+    title: "AI-First Design",
+    description: "Every product in our suite is built with intelligent systems at the core, making complex tasks simple and intuitive."
   },
   {
     number: "03",
-    title: "Future-Ready",
-    description: "Building platforms and tools that empower the next generation of creators and innovators."
+    title: "Accessible to All",
+    description: "Free tiers for everyone. Pro features for power users. Enterprise solutions for teams. AI tools shouldn't be gatekept."
   }
 ];
 
@@ -28,7 +28,11 @@ export const About: React.FC<AboutProps> = ({ setInteractionState }) => {
     <section id="about" className="py-32 px-6 bg-white dark:bg-[#050505] transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         <div className="mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-zinc-900 dark:text-white">ABOUT KAGELABS</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-zinc-900 dark:text-white">BUILDING THE FUTURE</h2>
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-6 font-light max-w-3xl">
+            Kage Labs is a suite of AI-powered SaaS products designed for the next generation. 
+            We're currently in the build phase, crafting tools that will transform how you work, learn, and create.
+          </p>
           <div className="h-px w-24 bg-orange-500"></div>
         </div>
         
