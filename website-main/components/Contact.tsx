@@ -20,11 +20,32 @@ const XIcon = createLucideIcon("X", [
 
 
 export const Contact: React.FC<ContactProps> = ({ setInteractionState }) => {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
+
   const socialLinks = [
     { Icon: Github, href: "https://github.com/KageLabs-Foundation" },
     { Icon: XIcon, href: "#" },
     { Icon: Linkedin, href: "#" }
   ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <section id="contact" className="py-32 px-6 bg-zinc-50 dark:bg-[#050505] border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto text-center py-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">Message Sent</h2>
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg">Thank you for reaching out. We'll get back to you soon.</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-32 px-6 bg-zinc-50 dark:bg-[#050505] border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
@@ -70,7 +91,7 @@ export const Contact: React.FC<ContactProps> = ({ setInteractionState }) => {
           </div>
         </div>
 
-        <form className="bg-white dark:bg-[#080808] border border-zinc-200 dark:border-zinc-900 p-8 md:p-10 relative">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#080808] border border-zinc-200 dark:border-zinc-900 p-8 md:p-10 relative">
           <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-orange-500/50"></div>
           
           <div className="space-y-6">
@@ -78,6 +99,9 @@ export const Contact: React.FC<ContactProps> = ({ setInteractionState }) => {
               <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2 font-mono">Your Name</label>
               <input 
                 type="text" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
                 className="w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 p-4 placeholder-zinc-400 dark:placeholder-zinc-700 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors duration-300"
                 placeholder="John Doe"
                 onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
@@ -89,6 +113,9 @@ export const Contact: React.FC<ContactProps> = ({ setInteractionState }) => {
               <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2 font-mono">Your Email</label>
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 p-4 placeholder-zinc-400 dark:placeholder-zinc-700 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors duration-300"
                 placeholder="john@example.com"
                 onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
@@ -100,6 +127,9 @@ export const Contact: React.FC<ContactProps> = ({ setInteractionState }) => {
               <label className="block text-xs text-zinc-500 uppercase tracking-wider mb-2 font-mono">Your Message</label>
               <textarea 
                 rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
                 className="w-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-800 p-4 placeholder-zinc-400 dark:placeholder-zinc-700 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors duration-300 resize-none"
                 placeholder="Tell us about your project..."
                 onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}

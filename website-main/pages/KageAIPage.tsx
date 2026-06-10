@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { InteractionState } from '../types';
 
@@ -74,11 +75,29 @@ export const KageAIPage: React.FC<ServicePageProps> = ({ setInteractionState }) 
                 </p>
               </div>
 
+              <Link
+                to="/kageai/chat"
+                className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold bg-orange-500 text-black hover:bg-orange-400 transition-colors"
+                onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
+                onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
+              >
+                Try Chat Demo
+              </Link>
+
+              <Link
+                to="/kageai/analyze"
+                className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold border border-orange-500/30 hover:border-orange-500 text-orange-500 hover:bg-orange-500/5 transition-colors"
+                onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
+                onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
+              >
+                Code Analyzer
+              </Link>
+
               <a
                 href="https://discord.gg/kagelabs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold bg-orange-500 text-black hover:bg-orange-400 transition-colors"
+                className="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold border border-orange-500/30 hover:border-orange-500 text-orange-500 hover:bg-orange-500/5 transition-colors"
                 onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
                 onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
               >

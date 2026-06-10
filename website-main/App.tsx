@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { LandingPage } from './pages/LandingPage';
 import { VisionPage } from './pages/VisionPage';
 import { TeamPage } from './pages/TeamPage';
 import { KageAIPage } from './pages/KageAIPage';
+import { KageAIChatPage } from './pages/KageAIChatPage';
+import { KageAIAnalyzePage } from './pages/KageAIAnalyzePage';
 import { KageComicsPage } from './pages/KageComicsPage';
 import { KageAnalyticsPage } from './pages/KageAnalyticsPage';
 import { KageStudyPage } from './pages/KageStudyPage';
 import { KageSystemPage } from './pages/KageSystemPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { InteractionState } from './types';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
 
 const App: React.FC = () => {
   const [interactionState, setInteractionState] = useState<InteractionState>(InteractionState.IDLE);
@@ -39,25 +49,25 @@ const App: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <main className="bg-zinc-50 dark:bg-[#050505] min-h-screen w-full relative selection:bg-orange-500 selection:text-white transition-colors duration-300">
         <CustomCursor interactionState={interactionState} />
         <Navbar setInteractionState={setInteractionState} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         
         <Routes>
-          <Route path="/" element={<LandingPage setInteractionState={setInteractionState} />} />
-          <Route path="/vision" element={<VisionPage setInteractionState={setInteractionState} />} />
-          <Route path="/team" element={<TeamPage setInteractionState={setInteractionState} />} />
-          <Route path="/kageai" element={<KageAIPage setInteractionState={setInteractionState} />} />
-          <Route path="/kagecomics" element={<KageComicsPage setInteractionState={setInteractionState} />} />
-          <Route path="/kageanalytics" element={<KageAnalyticsPage setInteractionState={setInteractionState} />} />
-          <Route path="/kagestudy" element={<KageStudyPage setInteractionState={setInteractionState} />} />
-          <Route path="/kagesystem" element={<KageSystemPage setInteractionState={setInteractionState} />} />
+          <Route path="/" element={<ErrorBoundary><LandingPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/vision" element={<ErrorBoundary><VisionPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/team" element={<ErrorBoundary><TeamPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kageai" element={<ErrorBoundary><KageAIPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kageai/chat" element={<ErrorBoundary><KageAIChatPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kageai/analyze" element={<ErrorBoundary><KageAIAnalyzePage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kagecomics" element={<ErrorBoundary><KageComicsPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kageanalytics" element={<ErrorBoundary><KageAnalyticsPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kagestudy" element={<ErrorBoundary><KageStudyPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="/kagesystem" element={<ErrorBoundary><KageSystemPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
+          <Route path="*" element={<ErrorBoundary><NotFoundPage setInteractionState={setInteractionState} /></ErrorBoundary>} />
         </Routes>
 
         <style>{`

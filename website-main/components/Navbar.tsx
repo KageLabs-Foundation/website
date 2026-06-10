@@ -10,12 +10,12 @@ interface NavbarProps {
 }
 
 const navItems: NavItem[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Products', href: '#products' },
+  { label: 'About', href: '/#about' },
+  { label: 'Products', href: '/#products' },
   { label: 'Vision', href: '/vision' },
   { label: 'Team', href: '/team' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Community', href: '#community' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Community', href: '/#community' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({ setInteractionState, isDarkMode, toggleTheme }) => {
@@ -39,30 +39,17 @@ export const Navbar: React.FC<NavbarProps> = ({ setInteractionState, isDarkMode,
 
         <div className="flex items-center space-x-8">
             <div className="hidden md:flex space-x-12 text-zinc-900 dark:text-white">
-            {navItems.map((item) => {
-              const isHashLink = item.href.startsWith('#');
-              return isHashLink ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm uppercase tracking-widest hover:text-orange-500 transition-colors duration-300"
-                  onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
-                  onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className="text-sm uppercase tracking-widest hover:text-orange-500 transition-colors duration-300"
-                  onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
-                  onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-sm uppercase tracking-widest hover:text-orange-500 transition-colors duration-300"
+                onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
+                onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
+              >
+                {item.label}
+              </Link>
+            ))}
             </div>
             
             <button
@@ -93,32 +80,18 @@ export const Navbar: React.FC<NavbarProps> = ({ setInteractionState, isDarkMode,
         }`}
       >
         <div className="flex flex-col space-y-8 text-center">
-          {navItems.map((item) => {
-            const isHashLink = item.href.startsWith('#');
-            return isHashLink ? (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-3xl font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors duration-300"
-                onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
-                onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.label}
-                to={item.href}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-3xl font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors duration-300"
-                onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
-                onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              to={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-3xl font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors duration-300"
+              onMouseEnter={() => setInteractionState(InteractionState.HOVER_BUTTON)}
+              onMouseLeave={() => setInteractionState(InteractionState.IDLE)}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </>

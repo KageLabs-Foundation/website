@@ -79,7 +79,7 @@ export const FAQ: React.FC<FAQProps> = ({ setInteractionState }) => {
                 <span className={`text-lg font-medium transition-colors duration-300 ${openIndex === index ? 'text-orange-500' : 'text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-200'}`}>
                   {item.question}
                 </span>
-                <div className={`transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${openIndex === index ? 'rotate-180' : 'rotate-0'}`}>
+                <div className="transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">
                   {openIndex === index ? (
                     <Minus className="w-5 h-5 text-orange-500" />
                   ) : (

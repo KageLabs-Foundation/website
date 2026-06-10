@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { InteractionState } from '../types';
-import { Brain, BookOpen, BarChart3, GraduationCap, Zap, ArrowRight, Box } from 'lucide-react';
+import { Brain, BookOpen, BarChart3, GraduationCap, Zap, ArrowRight } from 'lucide-react';
 
 interface FeaturesProps {
   setInteractionState: (state: InteractionState) => void;

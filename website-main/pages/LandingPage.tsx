@@ -4,6 +4,7 @@ import { About } from '../components/About';
 import { Features } from '../components/Features';
 import { FAQ } from '../components/FAQ';
 import { Community } from '../components/Community';
+import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { InteractionState } from '../types';
 
@@ -18,13 +19,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setInteractionState })
 
       <div className="py-4 border-y border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black overflow-hidden flex transition-colors duration-300">
         <div className="whitespace-nowrap animate-marquee text-zinc-400 dark:text-zinc-700 font-mono text-sm tracking-[1em]">
-           KAGE LABS • AI-POWERED SAAS • COMING 2026 • FREE TIER AVAILABLE •
+           KAGE LABS • AI-POWERED SAAS • COMING SOON • FREE TIER AVAILABLE •
         </div>
         <div
           className="whitespace-nowrap animate-marquee text-zinc-400 dark:text-zinc-700 font-mono text-sm tracking-[1em]"
           aria-hidden="true"
         >
-           KAGE LABS • AI-POWERED SAAS • COMING 2026 • FREE TIER AVAILABLE •
+           KAGE LABS • AI-POWERED SAAS • COMING SOON • FREE TIER AVAILABLE •
         </div>
       </div>
 
@@ -44,6 +45,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setInteractionState })
 
       <FAQ setInteractionState={setInteractionState} />
       <Community setInteractionState={setInteractionState} />
+      <Contact setInteractionState={setInteractionState} />
       <Footer setInteractionState={setInteractionState} />
     </>
   );

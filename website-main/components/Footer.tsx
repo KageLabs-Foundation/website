@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { InteractionState } from '../types';
 
 interface FooterProps {
@@ -16,9 +17,9 @@ export const Footer: React.FC<FooterProps> = ({ setInteractionState }) => {
             KAGELABS
         </h2>
         <div className="mt-12 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-zinc-500 dark:text-zinc-600 text-sm tracking-wider uppercase">
-            <a href="#products" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Products</a>
-            <a href="/vision" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Vision</a>
-            <a href="/team" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Team</a>
+            <Link to="/#products" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Products</Link>
+            <Link to="/vision" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Vision</Link>
+            <Link to="/team" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Team</Link>
             <a href="https://discord.gg/kagelabs" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900 dark:hover:text-white transition-colors">Discord</a>
         </div>
         <div className="mt-8 text-zinc-400 dark:text-zinc-800 text-xs">
